@@ -40,9 +40,10 @@
 			  The <code>fileValidator</code> plugin lets you warn users before they start uploading 
 			  enormous files.
 			</p>
+			<p>This is forked from <a href="https://github.com/adamsanderson">adamsanderson's</a> <a href="https://github.com/adamsanderson/jQuery-File-Validator">jQuery-File-Validator</a>
 			<div>
-        <a href='https://github.com/adamsanderson/jQuery-File-Validator' class='button'>Source</a>
-        <a href='https://github.com/adamsanderson/jQuery-File-Validator/zipball/master' class='button'>Download</a>
+        <a href='https://github.com/dsouzaalfred/jQuery-File-Validator' class='button'>Source</a>
+        <a href='https://github.com/dsouzaalfred/jQuery-File-Validator/archive/master.zip' class='button'>Download</a>
       </div>
 		</div>
 		<nav class="one-third column table-of-contents">
@@ -89,6 +90,7 @@
 $( el ).fileValidator({
   onValidation: function(files){ /* Called once before validating files */ },
   onInvalid:    function(validationType, file){ /* Called once for each invalid file */ },
+  onValid:     function(file){ /* Called once for each valid file */ },
   maxSize:      '2m', //optional
   type:         'image' //optional
 });
@@ -142,6 +144,14 @@ $( el ).fileValidator({
 		        This <code>file</code> is the failing file.
 		      </p>
 		    </dd>
+			
+			<dt><strong>onValid</strong>: <code>function(file)</code></dt>
+		    <dd>
+		      <p>
+		        This is called whenever a file passes its validation.
+		        This <code>file</code> is the passing file.
+		      </p>
+		    </dd>
 		  </dl>
 		</div>  
     
@@ -152,6 +162,7 @@ $( el ).fileValidator({
 $('input[type=file]').fileValidator({
   onValidation: function(files){      $(this).attr('class','');          },
   onInvalid:    function(type, file){ $(this).addClass('invalid '+type); },
+  onValid:     function(file){ alert('Valid File'); },
   maxSize:      '1m'
 });
       </pre>
@@ -160,6 +171,7 @@ $('input[type=file]').fileValidator({
       <pre class='source sh_javascript_dom'>
 $('input[type=file]').fileValidator({
   onInvalid:    function(type, file){ $(this).val(null); },
+  onValid:     function(file){ alert('Valid File'); },
   type:        'image'
 });
       </pre>
@@ -179,8 +191,7 @@ $('input[type=file]').fileValidator({
     
     <div class="sixteen columns">
       <footer>
-    	  Heck Yes! This was made by <a href='http://monkeyandcrow.com'>Adam Sanderson</a>, 
-    	  drop by <a href='http://monkeyandcrow.com'>Monkey and Crow</a> for more.
+    	  
     	</footer>
     </div>
 	</div><!-- container -->
